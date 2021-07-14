@@ -1,3 +1,7 @@
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 const {
   FB_CERT_TYPE,
   FB_CERT_PROJECT_ID,

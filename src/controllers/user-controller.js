@@ -5,9 +5,9 @@ async function signIn(req, res, next) {
   const { uid, email } = req.user;
 
   try {
-    const response = await UserRepo.findOne({ email: email });
+    const response = await db.User.findOne({ email: email });
 
-    if (response.error) {
+    if (!response) {
       return res.status(400).send(
         generateResponse({
           error: response.error,
@@ -15,22 +15,26 @@ async function signIn(req, res, next) {
       );
     }
 
-    if (response.data) {
+    if (response) {
       return res.status(200).send(
         generateResponse({
-          data: "OK",
+          data: {
+            email: email,
+          },
         }),
       );
     }
 
-    await UserRepo.create({
+    await db.User.create({
       firebase_id: uid,
       email: email,
     });
 
     res.status(201).send(
       generateResponse({
-        data: "OK",
+        data: {
+          email: email,
+        },
       }),
     );
   } catch (error) {
@@ -79,7 +83,7 @@ async function fetchUserById(req, res, next) {
   try {
     const dbResponse = await db.User.findById(userId);
 
-    if (dbResponse.error) {
+    if (!dbResponse) {
       res.status(400).send(
         generateResponse({
           error: dbResponse.error,
