@@ -4,35 +4,27 @@ const { isEmail } = require("validator");
 
 const UserSchema = Schema(
   {
-    firstName: {
+    name: {
       type: String,
-      trim: true,
+      // trim: true,
     },
     lastName: {
       type: String,
-      trim: true,
+      // trim: true,
     },
     email: {
       type: String,
-      required: [true, "The email is required"],
-      trim: true,
+      required: [true, "Email is required"],
+      // trim: true,
       unique: true,
       validate: {
         validator: (value) => isEmail(value),
         message: (props) => `The email ${props.value} is not valid`,
       },
     },
-    password: {
-      type: String,
-      unique: true,
-    },
     firebase_id: {
       type: String,
       unique: true,
-    },
-    active: {
-      type: Boolean,
-      default: false,
     },
   },
 

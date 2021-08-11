@@ -1,38 +1,37 @@
 {
-  "name": "rest-api-with-firebase",
+  "name": "node.js-rest-api",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000r\u0000e\u0000s\u0000t\u0000-\u0000a\u0000p\u0000i\u0000-\u0000w\u0000i\u0000t\u0000h\u0000-\u0000f\u0000i\u0000r\u0000e\u0000b\u0000a\u0000s\u0000e\u0000\r\u0000 \u0000",
+  "description": "node.js rest API",
   "main": "src/index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "nodemon ./src/index.js",
     "dev": "nodemon --inspect --trace-warnings ./src/index.js",
-    "test": "jest --env=node"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/assembler-school/rest-api-with-firebase.git"
+    "url": "git+https://github.com/solaz0824/rest-api-intro-workshop.git"
   },
-  "keywords": [
-    "nodejs",
-    "firebase"
-  ],
-  "author": "Joan Carrion",
+  "author": "Eunyoung Kim",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/assembler-school/rest-api-with-firebase/issues"
+    "url": "https://github.com/solaz0824/rest-api-intro-workshop/issues"
   },
-  "homepage": "https://github.com/assembler-school/rest-api-with-firebase#readme",
+  "homepage": "https://github.com/solaz0824/rest-api-intro-workshop#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "firebase-admin": "^9.10.0",
+    "firebase-admin": "^9.11.0",
     "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
     "loglevel": "^1.7.1",
     "mongoose": "^5.12.15",
     "npm-check-updates": "^11.7.1",
+    "rand-token": "^1.0.1",
     "validator": "^13.6.0"
   },
   "devDependencies": {

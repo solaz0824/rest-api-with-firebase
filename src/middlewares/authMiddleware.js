@@ -1,22 +1,14 @@
 const { getAuthToken, verifyAuthToken } = require("../services/firebase");
-const db = require("../models");
 
 async function authMiddleware(req, res, next) {
   try {
     const bearerToken = await getAuthToken(req.headers);
     const userClaims = await verifyAuthToken(bearerToken);
 
-    const user = await db.User.findOne({
-      email: userClaims.email,
-    });
-
-    if (!user) {
-      throw new Error("Invalid token");
-    }
-
+    const { email, uid } = userClaims;
     req.user = {
-      email: userClaims.email,
-      id: user._id,
+      email: email,
+      uid: uid,
     };
 
     next();

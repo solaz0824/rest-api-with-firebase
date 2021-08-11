@@ -1,9 +1,9 @@
 const admin = require("firebase-admin");
 
-const firebaseCertConfig = require("./config");
+const { config } = require("../../config");
 
 admin.initializeApp({
-  credential: admin.credential.cert(firebaseCertConfig),
+  credential: admin.credential.cert(config.firebase.certConfig),
 });
 
 const auth = admin.auth();
@@ -13,5 +13,7 @@ function verifyIdToken(token) {
 }
 
 module.exports = {
+  admin: admin,
+  auth: auth,
   verifyIdToken: verifyIdToken,
 };
